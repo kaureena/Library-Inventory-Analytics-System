@@ -1,0 +1,4 @@
+member_id,member_name,membership_type,join_date,status
+M001,Member_001,Student,2025-09-01,Active
+M002,Member_002,Staff,2025-06-15,Active
+M003,Member_003,Public,2025-01-10,Active

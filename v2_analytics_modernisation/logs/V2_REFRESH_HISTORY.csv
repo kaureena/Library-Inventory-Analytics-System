@@ -1,0 +1,2 @@
+refresh_id,run_id,refresh_time,status,duration_seconds,notes
+PBI-001,run-0001,2026-02-03 02:50:55,OK,40,Generated dashboard PNG exports

@@ -1,0 +1,145 @@
+# Logbook — V1 Baseline (2010-03-10 → 2010-04-18)
+
+> Daily notes aligned with the Progress Log. Hours are individual effort and include small overheads (setup, verification).
+
+- **2010-03-10** — **3.0h** (PLAN) — Kick-off: confirm scope, stakeholders (librarian/admin), and deliverables. Create backlog + milestone plan.
+  - Outputs: docs/logs/01_progress_log_weekly.md; docs/logs/03_decision_log_ADR.md
+  - Notes: Definition-of-done drafted (features + evidence).
+- **2010-03-11** — **4.0h** (DESIGN) — Write user stories + acceptance criteria. Define entities (Book, Member, Transaction, Fine) and main workflows.
+  - Outputs: docs/diagrams/erd_notes.md; v1_bca_basic_system/src/app/rules.py
+  - Notes: Rules documented early to keep v1 and v2 aligned.
+- **2010-03-12** — **3.5h** (DESIGN) — Draft architecture (UI → app logic → SQLite). Create mermaid architecture flow and module boundaries.
+  - Outputs: ARCHITECTURE.md; docs/mermaid/architecture_flow.mmd
+  - Notes: Kept separation between UI layer and DB layer.
+- **2010-03-13** — **3.5h** (DB) — Design OLTP schema (books/members/transactions/fines/audit). Decide keys, constraints, and indexes for search.
+  - Outputs: v1_bca_basic_system/database/schema.sql
+  - Notes: Planned unique ISBN + member_id; index on title/author.
+- **2010-03-14** — **3.0h** (DOC) — Create governance docs (DATA_README, PRIVACY, SECURITY, INSTALL outline). Define synthetic data policy.
+  - Outputs: DATA_README.md; PRIVACY.md; SECURITY.md; INSTALL_STEPS.md
+  - Notes: Explicitly banned real member identities (portfolio safe).
+- **2010-03-15** — **2.5h** (PLAN) — Build project schedule (weekly goals) + risk brainstorm. Define evidence checklist (screenshots/exports).
+  - Outputs: docs/logs/04_risk_and_issues_log.md; docs/logs/09_weekly_hours.csv
+  - Notes: Added risk items for PII leakage and stock integrity.
+- **2010-03-16** — **1.0h** (DOC) — Weekly wrap: summarise progress, update logbook, confirm next-week priorities.
+  - Outputs: docs/logs/01_progress_log_weekly.md; v1_bca_basic_system/logs/logbook.md
+  - Notes: Week 1 closed with design + planning complete.
+- **2010-03-17** — **4.0h** (DB) — Implement SQLite schema with constraints + indexes. Add audit columns (created_at, updated_at).
+  - Outputs: v1_bca_basic_system/database/schema.sql
+  - Notes: Validated schema creates cleanly on fresh DB.
+- **2010-03-18** — **3.5h** (DB) — Create seed_synthetic.sql with realistic synthetic books/members and category/branch references.
+  - Outputs: v1_bca_basic_system/database/seed_synthetic.sql
+  - Notes: Ensured no PII and plausible distributions.
+- **2010-03-19** — **4.0h** (DEV) — Build DB access layer + helpers (connect, query, transactions). Add error handling conventions.
+  - Outputs: v1_bca_basic_system/src/app/__init__.py; v1_bca_basic_system/src/main.py
+  - Notes: Created reusable helper for safe commit/rollback.
+- **2010-03-20** — **3.5h** (DEV) — Implement Books CRUD with validations: unique ISBN, non-negative stock, required fields.
+  - Outputs: v1_bca_basic_system/src/main.py; v1_bca_basic_system/src/app/rules.py
+  - Notes: Added guardrails to prevent negative available_copies.
+- **2010-03-21** — **3.0h** (UI) — Create initial UI menu + Books screen (list/search/add/edit). Add navigation + friendly messaging.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_02_books.png
+  - Notes: UI aligned to CRUD flow for demo.
+- **2010-03-22** — **2.5h** (TEST) — Write validation tests for Books (unique ISBN, stock rules). Run smoke tests with seed data; record issues.
+  - Outputs: v1_bca_basic_system/tests/test_basic_flows.py; v1_bca_basic_system/logs/V1_TEST_MATRIX.md
+  - Notes: Recorded expected errors for invalid inputs.
+- **2010-03-23** — **0.0h** (REST) — No planned work (rest / buffer).
+- **2010-03-24** — **4.0h** (DEV) — Implement Members CRUD (add/edit/deactivate/list) + validations and unique member_id. Add search by ID/name.
+  - Outputs: v1_bca_basic_system/src/main.py
+  - Notes: Added inactive status to block issuing.
+- **2010-03-25** — **3.5h** (DEV) — Build Member profile view: active issues count, fine balance, last activity.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_05_member_profile.png
+  - Notes: Prepared for drill-down style demo.
+- **2010-03-26** — **3.0h** (DESIGN) — Define Issue/Return business rules: due-date policy, max active issues, fine rate, loss/damage handling.
+  - Outputs: v1_bca_basic_system/src/app/rules.py; v1_bca_basic_system/logs/V1_VALIDATION_RULES.md
+  - Notes: Pinned fine calculation to clear policy examples.
+- **2010-03-27** — **4.0h** (DEV) — Implement Issue workflow backend: validate member + availability; create transaction; decrement stock; set due_date.
+  - Outputs: v1_bca_basic_system/src/main.py
+  - Notes: Prevented issuing same copy twice via stock checks.
+- **2010-03-28** — **3.0h** (UI) — Create Issue screen UI (select member/book, confirm issue). Add inline validation + error states.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_06_issue_book.png
+  - Notes: Added UX patterns: disabled buttons until valid selection.
+- **2010-03-29** — **2.5h** (TEST) — Scenario testing: out-of-stock, inactive member, duplicate issue, max issues exceeded. Fix defects.
+  - Outputs: v1_bca_basic_system/tests/test_basic_flows.py
+  - Notes: Captured failing cases and patched rules.
+- **2010-03-30** — **1.0h** (DOC) — Update validation rules document with Issue flow rules and examples.
+  - Outputs: v1_bca_basic_system/logs/V1_VALIDATION_RULES.md
+  - Notes: Ensured rules are readable for evaluators.
+- **2010-03-31** — **4.0h** (DEV) — Implement Return workflow backend: update return_date; increment stock; compute overdue fine.
+  - Outputs: v1_bca_basic_system/src/main.py
+  - Notes: Blocked double-return; handled missing transaction.
+- **2010-04-01** — **3.0h** (UI) — Create Return screen UI with fine preview and confirmation.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_07_return_book.png
+  - Notes: Previewed fine before committing return.
+- **2010-04-02** — **3.0h** (DEV) — Build Overdues view: list overdue transactions, ageing buckets, filters by branch/category/member.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_08_overdues.png
+  - Notes: Ageing buckets: 1–7, 8–14, 15+ days.
+- **2010-04-03** — **0.5h** (PLAN) — Holiday check-in: backlog grooming + confirm next steps for exports and evidence.
+  - Outputs: docs/logs/03_decision_log_ADR.md
+  - Notes: Kept small to avoid over-claiming hours.
+- **2010-04-04** — **3.0h** (DEV) — Implement CSV export pack: books, members, issues/returns, fines. Standardise export naming + folders.
+  - Outputs: v1_bca_basic_system/export/sample_books_export.csv; v1_bca_basic_system/logs/V1_EXPORT_REGISTER.csv
+  - Notes: Exports designed to feed v2 later.
+- **2010-04-05** — **2.5h** (QA) — Manual QA: verify exports match UI counts, confirm fine rounding, date formats, and stock integrity.
+  - Outputs: v1_bca_basic_system/logs/V1_RUNBOOK.md
+  - Notes: Logged any discrepancies and fixed.
+- **2010-04-06** — **0.0h** (REST) — No planned work (rest / buffer).
+- **2010-04-07** — **3.5h** (UI) — Create Fines screen: outstanding fines, payment status, member drill-down.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_09_fines.png
+  - Notes: Added mark-paid action (demo).
+- **2010-04-08** — **3.5h** (DEV) — Add Reports module: top borrowed books, active members, overdue trend summary. Add Audit Log output.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_10_reports_exports.png; v1_bca_basic_system/ui/screenshots/ui_12_audit_log.png
+  - Notes: Reports kept simple but defensible.
+- **2010-04-09** — **2.0h** (QA) — Bug-fix sprint: prevent double return, handle invalid IDs, enforce constraints, tidy UI messaging.
+  - Outputs: v1_bca_basic_system/src/main.py
+  - Notes: Focused on credibility: correct results > extra features.
+- **2010-04-10** — **0.5h** (DOC) — Holiday documentation: update README with fine policy examples and export paths.
+  - Outputs: README.md
+  - Notes: Only light edits.
+- **2010-04-11** — **3.0h** (UI) — Build Settings/Roles screen stub (admin vs librarian) + navigation polish. Add confirmation for destructive actions.
+  - Outputs: v1_bca_basic_system/ui/screenshots/ui_11_settings_roles.png
+  - Notes: Role handling documented as simple toggle.
+- **2010-04-03** — **2.5h** (DOC) — Capture final UI evidence screenshots set and update Evidence Index links.
+  - Outputs: EVIDENCE_INDEX.md; v1_bca_basic_system/ui/screenshots/
+  - Notes: Verified all images open and are HD.
+- **2010-04-04** — **1.0h** (DOC) — Update root README to embed key screenshots and explain baseline workflow.
+  - Outputs: README.md
+  - Notes: Improved reviewer readability.
+- **2010-04-05** — **4.0h** (TEST) — Write end-to-end tests for core flows (issue, return, fine calc, exports). Add synthetic fixtures.
+  - Outputs: v1_bca_basic_system/tests/test_basic_flows.py
+  - Notes: Ensured deterministic tests.
+- **2010-04-06** — **3.5h** (TEST) — Expand V1_TEST_MATRIX and automate validation checks (schema constraints, null checks). Run and record results.
+  - Outputs: v1_bca_basic_system/logs/V1_TEST_MATRIX.md
+  - Notes: Documented pass/fail and next actions.
+- **2010-04-07** — **3.0h** (QA) — Regression run + fix failing scenarios. Update seed data to cover edge cases (overdue, loss, damaged).
+  - Outputs: v1_bca_basic_system/database/seed_synthetic.sql
+  - Notes: Added edge-case transactions.
+- **2010-04-08** — **3.0h** (DOC) — Write V1_RUNBOOK: install, run, demo flow, troubleshooting. Link screenshots and exports.
+  - Outputs: v1_bca_basic_system/logs/V1_RUNBOOK.md
+  - Notes: Runbook kept step-by-step.
+- **2010-04-09** — **2.5h** (DOC) — Update ARCHITECTURE + data dictionary + export register. Ensure all paths correct and no placeholders.
+  - Outputs: ARCHITECTURE.md; docs/logs/05_run_register.csv
+  - Notes: Checked links to evidence.
+- **2010-04-10** — **2.0h** (QA) — Evidence review: ensure screenshots HD, exports open, schema & seed scripts reproducible. Fix mismatches.
+  - Outputs: docs/evidence/README.md
+  - Notes: Portfolio safety checks repeated.
+- **2010-04-11** — **0.0h** (REST) — No planned work (rest / buffer).
+- **2010-04-12** — **3.0h** (PLAN) — Prepare v1 release checklist: required files, evidence, test pass criteria, known limitations.
+  - Outputs: docs/quality/REPRODUCIBILITY_CHECKLIST.md
+  - Notes: Aligned with BCA evaluation expectations.
+- **2010-04-13** — **3.5h** (QA) — Final bug fixes + UI polish (consistency, error messages). Confirm fine rounding and stock integrity.
+  - Outputs: v1_bca_basic_system/src/main.py
+  - Notes: Reviewed negative stock scenario.
+- **2010-04-14** — **3.0h** (DOC) — Finalize changelog + logbook + V1_VALIDATION_RULES. Ensure docs cross-link correctly.
+  - Outputs: v1_bca_basic_system/logs/changelog.md; v1_bca_basic_system/logs/logbook.md; v1_bca_basic_system/logs/V1_VALIDATION_RULES.md
+  - Notes: Prepared final log pack.
+- **2010-04-15** — **3.0h** (TEST) — Run full test suite + manual sanity. Record outcomes and update test matrix with pass/fail.
+  - Outputs: v1_bca_basic_system/logs/V1_TEST_MATRIX.md
+  - Notes: All critical paths passed.
+- **2010-04-16** — **2.5h** (DOC) — Finalize sample exports and V1_EXPORT_REGISTER. Update EVIDENCE_INDEX and ensure consistent naming.
+  - Outputs: v1_bca_basic_system/logs/V1_EXPORT_REGISTER.csv; EVIDENCE_INDEX.md
+  - Notes: Ensured sample exports match schema.
+- **2010-04-17** — **2.0h** (REL) — Package v1 baseline release (v1.0): folder hygiene, dependency freeze, release notes, zip snapshot.
+  - Outputs: CHANGELOG.md
+  - Notes: Tagged v1.0 in changelog.
+- **2010-04-18** — **0.5h** (DOC) — Buffer day: final checks + ensure repo is portfolio-safe (no PII) and reproducible.
+  - Outputs: PRIVACY.md; DATA_README.md
+  - Notes: Final safety sign-off.

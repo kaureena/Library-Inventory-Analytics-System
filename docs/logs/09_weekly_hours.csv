@@ -1,0 +1,3 @@
+week_start,week_end,total_hours,focus,notes
+20/01/2026,26/01/2026,16,v1 baseline + v2 pipeline,Core workflow + ETL + DQ
+27/01/2026,03/02/2026,13,dashboards + monitoring + QA packs,Exports + runbook + checks

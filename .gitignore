@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.dist/
+.build/
+
+# Environments
+.venv/
+env/
+venv/
+
+# Secrets
+.env
+*.key
+
+# Runtime logs (keep local-only)
+v2_analytics_modernisation/runtime_logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

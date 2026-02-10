@@ -1,0 +1,7 @@
+{
+  "rule_id": "stock_available_le_total",
+  "severity": "FAIL",
+  "table": "stg_books",
+  "condition": "copies_available <= copies_total",
+  "description": "Available copies cannot exceed total copies."
+}

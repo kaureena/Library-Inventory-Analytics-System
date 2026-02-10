@@ -1,0 +1,9 @@
+{
+  "rule_id": "fk_book_id",
+  "severity": "FAIL",
+  "table": "stg_transactions",
+  "foreign_key": "book_id",
+  "reference_table": "stg_books",
+  "reference_key": "book_id",
+  "description": "Transactions must reference valid book_id."
+}

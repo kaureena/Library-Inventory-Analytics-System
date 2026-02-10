@@ -1,0 +1,6 @@
+flowchart LR
+  R[ETL Run] --> S[Run Register Snapshot]
+  S --> DQ[DQ Status]
+  DQ -->|PASS| P[Publish curated + exports]
+  DQ -->|WARN/FAIL| I[Open DQ Issues]
+  P --> H[Refresh Health Snapshot]

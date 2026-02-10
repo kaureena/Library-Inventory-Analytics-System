@@ -1,0 +1,7 @@
+kpi,definition,table,field
+Issues (daily),Count of issue transactions by issue_date,kpi_daily_issues_returns,issues_count
+Returns (daily),Count of returned transactions by return_date,kpi_daily_issues_returns,returns_count
+Overdue rate,Overdues / returns by return_date,kpi_overdue_daily,overdue_rate
+Fine total,Sum of fine_amount for returned transactions,kpi_overdue_daily,fine_total
+Stockout rate,Share of books with est_available = 0 per branch,kpi_inventory_health,stockout_flag
+Top members by issues,Members ranked by number of issue transactions,kpi_member_activity_top,issues

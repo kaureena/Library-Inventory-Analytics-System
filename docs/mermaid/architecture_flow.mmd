@@ -1,0 +1,19 @@
+flowchart LR
+  subgraph V1[BCA Baseline System]
+    UI[UI Forms] --> APP[Application Logic]
+    APP --> DB[(SQLite OLTP)]
+    APP --> EXP[CSV Exports]
+  end
+
+  subgraph V2[Analytics Modernisation]
+    RAW[Raw Synthetic CSV] --> ETL[ETL Pipeline]
+    ETL --> STG[Staged Outputs]
+    STG --> DQ[DQ Checks]
+    DQ --> CUR[Curated KPI Tables]
+    CUR --> WH[(Star Schema)]
+    WH --> BI[Dashboard Exports]
+    WH --> MON[Monitoring + Run Register]
+  end
+
+  DB --> RAW
+  EXP --> RAW

@@ -1,0 +1,5 @@
+flowchart LR
+  Client[Client / UI] --> API[FastAPI Service]
+  API --> OLTP[(SQLite)]
+  API --> Export[CSV Export Endpoint]
+  API --> Metrics[Basic Metrics Endpoint]

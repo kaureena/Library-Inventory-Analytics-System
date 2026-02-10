@@ -1,0 +1,11 @@
+{
+  "rule_id": "membership_type_domain",
+  "severity": "WARN",
+  "table": "stg_members",
+  "allowed_values": [
+    "Student",
+    "Staff",
+    "Public"
+  ],
+  "description": "membership_type should be one of the supported values."
+}

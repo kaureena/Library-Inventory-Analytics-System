@@ -1,0 +1,9 @@
+{
+  "rule_id": "fk_member_id",
+  "severity": "FAIL",
+  "table": "stg_transactions",
+  "foreign_key": "member_id",
+  "reference_table": "stg_members",
+  "reference_key": "member_id",
+  "description": "Transactions must reference valid member_id."
+}

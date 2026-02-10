@@ -1,0 +1,10 @@
+{
+  "rule_id": "member_status_domain",
+  "severity": "WARN",
+  "table": "stg_members",
+  "allowed_values": [
+    "Active",
+    "Inactive"
+  ],
+  "description": "status should be Active or Inactive."
+}

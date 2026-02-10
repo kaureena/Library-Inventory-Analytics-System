@@ -1,0 +1,15 @@
+{
+  "rule_id": "required_columns_books",
+  "severity": "FAIL",
+  "table": "stg_books",
+  "required_columns": [
+    "book_id",
+    "title",
+    "author",
+    "category",
+    "branch",
+    "copies_total",
+    "copies_available"
+  ],
+  "description": "Books staged table must contain required columns for inventory logic."
+}

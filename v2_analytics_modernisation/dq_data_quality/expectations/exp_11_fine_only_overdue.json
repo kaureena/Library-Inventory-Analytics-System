@@ -1,0 +1,7 @@
+{
+  "rule_id": "fine_only_when_overdue",
+  "severity": "WARN",
+  "table": "stg_transactions",
+  "condition": "fine_amount = 0 OR (return_date > due_date)",
+  "description": "Fine can be charged only when return is late."
+}

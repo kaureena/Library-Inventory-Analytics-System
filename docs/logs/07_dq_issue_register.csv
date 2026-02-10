@@ -1,0 +1,4 @@
+issue_id,run_id,rule_id,severity,status,example_key,action_taken,owner,updated
+DQ-0001,run-0001,due_date_after_issue_date,WARN,Open,TX000001,Reviewed generator: due_date == issue_date row kept as warning for demonstration,Data/BI,2026-02-03
+DQ-0002,run-0001,fine_only_when_overdue,WARN,Open,TX000002,Reviewed generator: fine set to non-zero without overdue to demonstrate warning,Data/BI,2026-02-03
+DQ-0003,run-0001,fine_matches_overdue_days,WARN,Open,TX000001,Investigate rounding/override differences; acceptable for synthetic demonstration,Data/BI,2026-02-03

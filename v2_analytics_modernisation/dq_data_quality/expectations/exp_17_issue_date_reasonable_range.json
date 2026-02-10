@@ -1,0 +1,6 @@
+{
+  "rule_id": "issue_date_reasonable_range",
+  "severity": "WARN",
+  "table": "stg_transactions",
+  "description": "Issue date should be within the synthetic simulation window; helps detect corrupt timestamps."
+}

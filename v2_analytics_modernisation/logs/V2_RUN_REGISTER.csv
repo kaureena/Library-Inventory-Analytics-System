@@ -1,0 +1,2 @@
+run_id,run_time,books_rows,members_rows,transactions_rows,dq_status,exports_generated,notes
+run-0001,2026-02-03 02:50:55,500,220,12000,PASS_WITH_WARNINGS,20,Synthetic run generated in repo build

@@ -1,0 +1,4 @@
+issue_id,run_time,rule_id,severity,status,sample_key,notes
+DQ-0004,2026-02-03 02:51:04,due_date_after_issue_date,WARN,WARN,TX000001,Due date must be after issue date
+DQ-0005,2026-02-03 02:51:04,fine_only_when_overdue,WARN,WARN,TX000002,Fine can be charged only if return_date > due_date
+DQ-0006,2026-02-03 02:51:04,fine_matches_overdue_days,WARN,WARN,TX000001,Fine amount should match days_overdue * fine_per_day

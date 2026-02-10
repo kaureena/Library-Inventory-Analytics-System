@@ -1,0 +1,96 @@
+{
+  "run_time": "2026-02-03 02:51:04",
+  "overall_status": "PASS_WITH_WARNINGS",
+  "warn_rules": 3,
+  "fail_rules": 0,
+  "rules": [
+    {
+      "rule_id": "required_columns",
+      "description": "Required columns must exist in staged tables",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    },
+    {
+      "rule_id": "unique_ids",
+      "description": "Primary keys should be unique",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    },
+    {
+      "rule_id": "referential_integrity",
+      "description": "Transactions must reference valid book_id and member_id",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    },
+    {
+      "rule_id": "due_date_after_issue_date",
+      "description": "Due date must be after issue date",
+      "severity": "WARN",
+      "status": "WARN",
+      "fail_rows": 1,
+      "sample_keys": [
+        "TX000001"
+      ],
+      "notes": ""
+    },
+    {
+      "rule_id": "return_after_issue_date",
+      "description": "Return date cannot be before issue date",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    },
+    {
+      "rule_id": "fine_only_when_overdue",
+      "description": "Fine can be charged only if return_date > due_date",
+      "severity": "WARN",
+      "status": "WARN",
+      "fail_rows": 1,
+      "sample_keys": [
+        "TX000002"
+      ],
+      "notes": ""
+    },
+    {
+      "rule_id": "fine_matches_overdue_days",
+      "description": "Fine amount should match days_overdue * fine_per_day",
+      "severity": "WARN",
+      "status": "WARN",
+      "fail_rows": 2,
+      "sample_keys": [
+        "TX000001",
+        "TX000002"
+      ],
+      "notes": ""
+    },
+    {
+      "rule_id": "stock_sane",
+      "description": "copies_available must be between 0 and copies_total",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    },
+    {
+      "rule_id": "refresh_snapshot_present",
+      "description": "Refresh snapshot must exist after ETL",
+      "severity": "INFO",
+      "status": "PASS",
+      "fail_rows": 0,
+      "sample_keys": [],
+      "notes": ""
+    }
+  ]
+}

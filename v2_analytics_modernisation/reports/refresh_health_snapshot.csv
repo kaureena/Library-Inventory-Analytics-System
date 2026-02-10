@@ -1,0 +1,2 @@
+run_id,last_refresh_time,status,duration_seconds_est,dq_status,exports_expected,exports_generated,dq_checked_time,exports_generated_time
+run-0001,2026-02-03 02:50:55,OK,40,PASS_WITH_WARNINGS,20,20,2026-02-03 02:51:04,2026-02-03 02:51:30

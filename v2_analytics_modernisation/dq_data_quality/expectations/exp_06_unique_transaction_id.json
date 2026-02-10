@@ -1,0 +1,7 @@
+{
+  "rule_id": "unique_transaction_id",
+  "severity": "FAIL",
+  "table": "stg_transactions",
+  "key": "transaction_id",
+  "description": "transaction_id must be unique."
+}

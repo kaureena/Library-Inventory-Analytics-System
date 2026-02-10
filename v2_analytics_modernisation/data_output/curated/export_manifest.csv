@@ -1,0 +1,15 @@
+file,rows
+dim_book.csv,500
+dim_branch.csv,5
+dim_category.csv,8
+dim_member.csv,220
+fact_fines.csv,5480
+fact_issue_return.csv,12000
+kpi_branch_comparison.csv,5
+kpi_category_insights.csv,8
+kpi_daily_issues_returns.csv,218
+kpi_fine_weekly.csv,30
+kpi_inventory_health.csv,500
+kpi_member_activity_top.csv,25
+kpi_overdue_aging.csv,4
+kpi_overdue_daily.csv,217

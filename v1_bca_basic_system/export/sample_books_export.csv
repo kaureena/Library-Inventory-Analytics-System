@@ -1,0 +1,4 @@
+book_id,isbn,title,author,category,published_year,copies_total,copies_available
+B001,9780000000001,Intro to SQL,Author_A,IT,2018,5,4
+B002,9780000000002,Data Analysis Basics,Author_B,Science,2019,3,3
+B003,9780000000003,History of Gujarat,Author_C,History,2012,4,4

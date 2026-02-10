@@ -1,0 +1,7 @@
+{
+  "rule_id": "no_negative_fines",
+  "severity": "FAIL",
+  "table": "stg_transactions",
+  "condition": "fine_amount >= 0",
+  "description": "Fine amounts must be non-negative."
+}

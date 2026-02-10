@@ -1,0 +1,38 @@
+-- DAX Measures (Concept)
+-- Table names match curated outputs.
+
+Issues Count =
+COUNTROWS(fact_issue_return)
+
+Returns Count =
+CALCULATE(
+    COUNTROWS(fact_issue_return),
+    fact_issue_return[returned_flag] = 1
+)
+
+Overdues =
+SUM(fact_issue_return[overdue_flag])
+
+Overdue Rate =
+DIVIDE([Overdues], [Returns Count])
+
+Fine Total =
+SUM(fact_issue_return[fine_amount])
+
+Fine Paid Count =
+SUM(fact_issue_return[fine_paid])
+
+Avg Fine (overdue only) =
+AVERAGEX(
+    FILTER(fact_issue_return, fact_issue_return[fine_amount] > 0),
+    fact_issue_return[fine_amount]
+)
+
+Stockouts =
+CALCULATE(
+    COUNTROWS(kpi_inventory_health),
+    kpi_inventory_health[stockout_flag] = 1
+)
+
+Stockout Rate =
+DIVIDE([Stockouts], COUNTROWS(kpi_inventory_health))

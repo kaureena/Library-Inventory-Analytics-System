@@ -1,0 +1,7 @@
+date,block,area,task,output_created,evidence_link,hours,status,notes
+10/03/2010,AM,v1,Defined OLTP schema for books/members/issues,database/schema.sql,v1_bca_basic_system/database/schema.sql,2,Done,Tables + constraints drafted
+10/03/2010,PM,v1,Created seed synthetic data + exports,seed_synthetic.sql;sample_books_export.csv,v1_bca_basic_system/export/,2.5,Done,Ensured no PII
+22/01/2026,AM,v2,Implemented synthetic generator (raw CSV),make_sample_data.py,v2_analytics_modernisation/scripts/make_sample_data.py,2,Done,Deterministic random seed
+22/01/2026,PM,v2,Built ETL raw->staged->curated,run_etl.py,v2_analytics_modernisation/etl/run_etl.py,3,Done,Added run_id + snapshots
+24/01/2026,AM,v2,Added DQ checks + HTML report,run_checks.py,dq_data_quality/run_checks.py,2,Done,Rule catalogue aligned to business rules
+03/02/2026,PM,v2,Generated dashboard exports set,generate_bi_exports.py,v2_analytics_modernisation/scripts/generate_bi_exports.py,3,Done,HD dashboard-like PNG exports

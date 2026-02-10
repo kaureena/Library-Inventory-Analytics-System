@@ -1,0 +1,52 @@
+# Logbook — V2 Analytics Modernisation (2026-01-19 → 2026-02-03)
+
+> Daily notes aligned with the Progress Log. Hours are individual effort and include small overheads (setup, verification).
+
+- **2026-01-19** — **3.0h** (PLAN) — v2 kickoff: define analytics objectives, KPI catalogue, dashboard page list, and success criteria (DQ + monitoring).
+  - Outputs: v2_analytics_modernisation/README.md; v2_analytics_modernisation/bi_powerbi/page_index.md
+  - Notes: Confirmed dashboard plan = 20 pages.
+- **2026-01-20** — **3.5h** (DATA) — Build synthetic raw generator aligned to v1: realistic distributions, deterministic seed, multi-branch and categories.
+  - Outputs: v2_analytics_modernisation/scripts/make_sample_data.py; v2_analytics_modernisation/data/raw/
+  - Notes: Ensured no PII; IDs are synthetic.
+- **2026-01-21** — **4.0h** (ETL) — Implement raw→staged ETL: cleaning, standardisation, dedupe, type casting. Add run_id and row-count snapshots.
+  - Outputs: v2_analytics_modernisation/etl/run_etl.py; v2_analytics_modernisation/data_output/staged/
+  - Notes: Staged layer is reproducible and deterministic.
+- **2026-01-22** — **3.5h** (ETL) — Implement staged→curated outputs: dims/facts + daily KPI tables (issues/returns, overdues, fines, inventory health).
+  - Outputs: v2_analytics_modernisation/data_output/curated/
+  - Notes: Curated layer aligns with dashboard grain.
+- **2026-01-23** — **3.5h** (DQ) — Implement DQ checks: referential integrity, negative stock, impossible dates, fine logic. Generate JSON+HTML report + issue register.
+  - Outputs: v2_analytics_modernisation/dq_data_quality/run_checks.py; v2_analytics_modernisation/reports/dq_summary.json; v2_analytics_modernisation/reports/dq_report.html
+  - Notes: DQ issues captured in register for realism.
+- **2026-01-24** — **2.5h** (WH) — Design warehouse-ready star schema SQL (dims/facts). Add notes for BI relationships and grain.
+  - Outputs: v2_analytics_modernisation/warehouse/schema/; v2_analytics_modernisation/warehouse/fact_issue_return.sql
+  - Notes: Schema designed for Power BI model.
+- **2026-01-25** — **0.5h** (DOC) — Light documentation: capture pipeline assumptions, versioning notes, and refresh cadence.
+  - Outputs: v2_analytics_modernisation/logs/V2_PROCESS_LOG.md
+  - Notes: Kept short (weekend).
+- **2026-01-26** — **3.5h** (BI) — Build dashboard export generator. Create pages 1–5: Overview, Issues/Returns, Overdues, Fine Collection, Inventory Health.
+  - Outputs: v2_analytics_modernisation/scripts/generate_bi_exports.py; v2_analytics_modernisation/bi_powerbi/exports/page_01_01_dashboard_overview.png
+  - Notes: Exports are synthetic but visually meaningful.
+- **2026-01-27** — **3.5h** (BI) — Create pages 6–10: Category Insights, Member Activity, Branch Comparison, Stockout Hotspots, Ageing Buckets. Update page index.
+  - Outputs: v2_analytics_modernisation/bi_powerbi/page_index.md; v2_analytics_modernisation/bi_powerbi/exports/page_10_10_overdue_ageing_buckets.png
+  - Notes: Checked consistent sizing across pages.
+- **2026-01-28** — **3.0h** (MON) — Add monitoring: run register, refresh history, DQ pass rate trend, row-count drift checks. Add sample logs.
+  - Outputs: v2_analytics_modernisation/logs/V2_RUN_REGISTER.csv; v2_analytics_modernisation/logs/V2_REFRESH_HISTORY.csv
+  - Notes: Monitoring pages reference these tables.
+- **2026-01-29** — **3.5h** (BI) — Create pages 11–15: Repeat Overdue Members, Staff Workload Proxy, Export Audit, DQ Summary, DQ Exceptions Detail.
+  - Outputs: v2_analytics_modernisation/bi_powerbi/exports/page_14_14_data_quality_summary.png
+  - Notes: DQ pages tied to actual dq_summary.json.
+- **2026-01-30** — **3.0h** (TEST) — Add tests: ETL smoke, DQ smoke, exports presence. Fix pipeline idempotency issues.
+  - Outputs: v2_analytics_modernisation/tests/test_etl_smoke.py; v2_analytics_modernisation/tests/test_exports_present.py
+  - Notes: Ensured pipeline can run twice without breaking.
+- **2026-01-31** — **2.5h** (BI) — Create pages 16–20: ETL Run History, Refresh Health, What-if Policy, Drill-through Book Profile, KPI Definitions.
+  - Outputs: v2_analytics_modernisation/bi_powerbi/exports/page_20_20_kpi_definitions_measure_catalogue.png
+  - Notes: Added KPI definitions CSV for transparency.
+- **2026-02-01** — **1.5h** (DOC) — Update root README highlights for v2. Refresh Evidence Index and add troubleshooting notes for DQ failures.
+  - Outputs: README.md; EVIDENCE_INDEX.md
+  - Notes: Improved reviewer navigation.
+- **2026-02-02** — **3.0h** (DOC) — Finalize V2_PIPELINE_RUNBOOK and monitoring playbook. Validate reproducibility end-to-end (run_all_local).
+  - Outputs: v2_analytics_modernisation/logs/V2_PIPELINE_RUNBOOK.md; v2_analytics_modernisation/logs/V2_MONITORING_PLAYBOOK.md
+  - Notes: Recorded expected runtimes + outputs.
+- **2026-02-03** — **2.5h** (REL) — Package v2 release (v2.0): verify outputs, update changelog, export final zip snapshot for portfolio.
+  - Outputs: CHANGELOG.md
+  - Notes: Release notes summarised dashboards + DQ.

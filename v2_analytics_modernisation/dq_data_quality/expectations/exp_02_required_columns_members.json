@@ -1,0 +1,13 @@
+{
+  "rule_id": "required_columns_members",
+  "severity": "FAIL",
+  "table": "stg_members",
+  "required_columns": [
+    "member_id",
+    "member_name",
+    "membership_type",
+    "join_date",
+    "status"
+  ],
+  "description": "Members staged table must contain required columns."
+}

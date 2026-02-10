@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <title>DQ Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    .badge { display:inline-block; padding:4px 10px; border-radius:14px; background:#eee; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; font-size: 13px; }
+    th { background: #f4f4f4; text-align: left; }
+  </style>
+</head>
+<body>
+  <h1>Data Quality Report — Library Pipeline</h1>
+  <p>Run time: <b>2026-02-03 02:51:04</b></p>
+  <p>Overall status: <span class='badge'><b>PASS_WITH_WARNINGS</b></span></p>
+
+  <h2>Rule results</h2>
+  <table>
+    <thead>
+      <tr><th>Rule</th><th>Severity</th><th>Status</th><th>Fail rows</th><th>Sample keys</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>required_columns</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>Required columns must exist in staged tables</td></tr>
+<tr><td>unique_ids</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>Primary keys should be unique</td></tr>
+<tr><td>referential_integrity</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>Transactions must reference valid book_id and member_id</td></tr>
+<tr><td>due_date_after_issue_date</td><td>WARN</td><td>WARN</td><td>1</td><td>TX000001</td><td>Due date must be after issue date</td></tr>
+<tr><td>return_after_issue_date</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>Return date cannot be before issue date</td></tr>
+<tr><td>fine_only_when_overdue</td><td>WARN</td><td>WARN</td><td>1</td><td>TX000002</td><td>Fine can be charged only if return_date > due_date</td></tr>
+<tr><td>fine_matches_overdue_days</td><td>WARN</td><td>WARN</td><td>2</td><td>TX000001, TX000002</td><td>Fine amount should match days_overdue * fine_per_day</td></tr>
+<tr><td>stock_sane</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>copies_available must be between 0 and copies_total</td></tr>
+<tr><td>refresh_snapshot_present</td><td>INFO</td><td>PASS</td><td>0</td><td></td><td>Refresh snapshot must exist after ETL</td></tr>
+
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;color:#666;">
+    This report is generated from synthetic data for portfolio purposes.
+  </p>
+</body>
+</html>

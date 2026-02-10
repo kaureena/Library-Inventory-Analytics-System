@@ -1,0 +1,7 @@
+{
+  "rule_id": "unique_member_id",
+  "severity": "FAIL",
+  "table": "stg_members",
+  "key": "member_id",
+  "description": "member_id must be unique."
+}

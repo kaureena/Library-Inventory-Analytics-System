@@ -1,0 +1,7 @@
+{
+  "rule_id": "return_after_issue_date",
+  "severity": "FAIL",
+  "table": "stg_transactions",
+  "condition": "return_date is null OR return_date >= issue_date",
+  "description": "Return date cannot be before issue date."
+}

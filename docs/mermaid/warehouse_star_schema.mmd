@@ -1,0 +1,9 @@
+flowchart LR
+  dim_date((dim_date)) --> fact_issue_return[[fact_issue_return]]
+  dim_book((dim_book)) --> fact_issue_return
+  dim_member((dim_member)) --> fact_issue_return
+  dim_branch((dim_branch)) --> fact_issue_return
+
+  dim_date --> fact_fines[[fact_fines]]
+  dim_member --> fact_fines
+  dim_branch --> fact_fines

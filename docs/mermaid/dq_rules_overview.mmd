@@ -1,0 +1,9 @@
+flowchart TD
+  A[DQ Rule Catalogue] --> B[Required columns present]
+  A --> C[No duplicate IDs]
+  A --> D[Referential integrity (book_id, member_id)]
+  A --> E[Due date after issue date]
+  A --> F[Return date after issue date]
+  A --> G[Fine only if overdue]
+  A --> H[No issue when stock is 0]
+  A --> I[Freshness snapshot present]

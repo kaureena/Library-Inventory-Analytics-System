@@ -1,0 +1,7 @@
+{
+  "rule_id": "due_date_after_issue_date",
+  "severity": "WARN",
+  "table": "stg_transactions",
+  "condition": "due_date > issue_date",
+  "description": "Due date must be after issue date."
+}

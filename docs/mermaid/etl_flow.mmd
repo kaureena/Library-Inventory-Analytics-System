@@ -1,0 +1,9 @@
+flowchart TD
+  S[Start run_id created] --> X[Extract raw CSVs]
+  X --> T[Transform: type fix + standardise]
+  T --> J[Join reference data]
+  J --> Q[DQ checks (schema + rules)]
+  Q -->|pass| L[Load curated outputs]
+  Q -->|warn/fail| I[Update issue register]
+  L --> B[Generate BI exports]
+  B --> M[Monitoring snapshot]

@@ -1,0 +1,7 @@
+{
+  "rule_id": "unique_book_id",
+  "severity": "FAIL",
+  "table": "stg_books",
+  "key": "book_id",
+  "description": "book_id must be unique."
+}

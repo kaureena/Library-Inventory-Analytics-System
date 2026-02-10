@@ -1,0 +1,7 @@
+{
+  "rule_id": "fine_matches_overdue_days",
+  "severity": "WARN",
+  "table": "stg_transactions",
+  "condition": "fine_amount approx days_overdue * fine_per_day",
+  "description": "Fine amount should match overdue days times fine policy."
+}

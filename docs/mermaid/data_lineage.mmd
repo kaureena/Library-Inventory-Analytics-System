@@ -1,0 +1,12 @@
+flowchart LR
+  A[Raw: books_raw.csv] --> B[Staged: stg_books.csv]
+  A2[Raw: members_raw.csv] --> B2[Staged: stg_members.csv]
+  A3[Raw: transactions_raw.csv] --> B3[Staged: stg_transactions.csv]
+
+  B --> C[Curated: dim_book.csv]
+  B2 --> C2[Curated: dim_member.csv]
+  B3 --> D[Curated: fact_issues_returns.csv]
+
+  D --> E[DQ checks + issue register]
+  D --> F[Dashboard exports]
+  D --> G[Run register snapshots]

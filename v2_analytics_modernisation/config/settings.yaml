@@ -1,0 +1,9 @@
+app:
+  name: library-book-inventory
+  environment: local
+pipeline:
+  run_id_prefix: run
+  seed: 42
+dq:
+  fine_per_day: 1.0
+  max_books_per_member: 5

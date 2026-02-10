@@ -1,0 +1,5 @@
+{
+  "rule_id": "exports_expected_present",
+  "severity": "INFO",
+  "description": "After export generation, exports_generated should match exports_expected."
+}

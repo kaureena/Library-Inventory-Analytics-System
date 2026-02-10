@@ -1,0 +1,7 @@
+category,hours,examples
+v1_baseline,8,CRUD modules + schema + exports + screenshots
+v2_etl_pipeline,7,raw->staged->curated + run_id snapshots
+v2_data_quality,3,rules + issue register + JSON/HTML report
+v2_warehouse_model,3,star schema SQL dims/facts
+dashboard_exports,4,page plan + HD exports + page index
+documentation,4,README + architecture + governance pack

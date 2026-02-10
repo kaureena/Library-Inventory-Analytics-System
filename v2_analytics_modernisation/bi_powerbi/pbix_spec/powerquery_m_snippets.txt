@@ -1,0 +1,11 @@
+// Power Query (M) Snippets
+// Parameterise the base folder so the PBIX works on any machine.
+
+let
+    BaseFolder = "C:\path\to\repo\v2_analytics_modernisation\data_output\curated\",
+    Source = Csv.Document(File.Contents(BaseFolder & "fact_issue_return.csv"),[Delimiter=",", Columns=17, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+in
+    PromotedHeaders
+
+// Repeat for each curated table.

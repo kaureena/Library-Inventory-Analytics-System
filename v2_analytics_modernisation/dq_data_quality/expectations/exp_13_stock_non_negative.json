@@ -1,0 +1,7 @@
+{
+  "rule_id": "stock_non_negative",
+  "severity": "FAIL",
+  "table": "stg_books",
+  "condition": "copies_total >= 0 AND copies_available >= 0",
+  "description": "Stock counts must be non-negative."
+}

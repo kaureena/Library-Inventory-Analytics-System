@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+pillow
+jinja2
+pytest
+fastapi
+uvicorn
+httpx
